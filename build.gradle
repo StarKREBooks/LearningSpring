@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.0.RELEASE'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'application'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+apply plugin: 'groovy'
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:Cairo-RELEASE'
+    }
+}
+
+mainClassName = 'App'
+
+dependencies {
+    //Spring dependencies:
+    implementation 'org.springframework:spring-core'
+    implementation 'org.springframework:spring-context:5.0.5.RELEASE'
+    //Guava:
+    implementation 'com.google.guava:guava:23.0'
+    //Junit:
+    testImplementation'junit:junit:4.12'
+    implementation 'org.codehaus.groovy:groovy-all:2.4.12'
+}
+
+repositories {
+    jcenter()
+}
+
+
