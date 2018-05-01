@@ -7,40 +7,5 @@
     <context:annotation-config/>
     <!--Setup default Component-scan-->
     <context:component-scan base-package="main"/>
-    <context:component-scan base-package="robots"/>
 
-
-
-    <!--StarKRE Robot-->
-    <bean id="starKRERobot"
-          class="robots.implementations.starKRERobot.StarKRERobot"
-          init-method="secondInit"
-          destroy-method="destroy">
-        <property name="version" value="7"/>
-        <property name="name" value="2"/>
-    </bean>
-
-    <!--724th Robot-->
-    <bean id="robot724"
-          class="robots.implementations.robot724.Robot724">
-        <property name="core" ref="core724"/>
-    </bean>
-
-    <!--724th Core-->
-    <bean id="core724" class="robots.implementations.robot724.core.Core724"
-          lazy-init="true"
-          init-method="install">
-    </bean>
-
-    <bean id="robot127"
-          class="robots.implementations.robot127.Robot127">
-    </bean>
-
-    <!--Define BeanPostProcessors:-->
-    <bean class="main.springApplication.beanPostProcessor.friendlyRobotAnnotationBeanPostProcessor.FriendlyRobotAnnotationBeanPostProcessor"/>
-    <bean class="main.springApplication.beanPostProcessor.robotVersionAnnotationBeanPostProcessor.RobotVersionAnnotationBeanPostProcessor"/>
-    <bean class="main.springApplication.beanPostProcessor.profilingAnnotationBeanPostProcessor.ProfilingAnnotationBeanPostProcessor"/>
-    <bean class="main.springApplication.beanPostProcessor.deprecatedRobotAnnotationBeanFactoryPostProcessor.DeprecatedRobotAnnotationBeanFactoryPostProcessor"/>
-    <!--Define ContextListener:-->
-    <bean class="main.springApplication.contextListener.FinalInitializationContextListener.FinalInitializationAnnotationContextListener"/>
 </beans>
