@@ -1,10 +1,11 @@
 package robots.implementations.starKRERobot;
 
-import main.springApplication.beanPostProcessor.profilingAnnotationBeanPostProcessor.Profiling;
-import main.springApplication.contextListener.FinalInitializationContextListener.FinalInitialization;
-import robots.abstractRobot.Robot;
 import main.springApplication.beanPostProcessor.friendlyRobotAnnotationBeanPostProcessor.FriendlyRobot;
+import main.springApplication.beanPostProcessor.profilingAnnotationBeanPostProcessor.Profiling;
 import main.springApplication.beanPostProcessor.robotVersionAnnotationBeanPostProcessor.RobotVersion;
+import main.springApplication.contextListener.FinalInitializationContextListener.FinalInitialization;
+import org.springframework.beans.factory.annotation.Value;
+import robots.abstractRobot.Robot;
 import robots.abstractRobot.core.Core;
 import robots.abstractRobot.head.Head;
 
@@ -23,10 +24,19 @@ public final class StarKRERobot implements Robot {
 
     private Core core;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
 
     @Override
     public final void calc() {
-        log.info("I'm calculating...");
+        log.info("I'm calculating... " + name);
     }
 
     private void secondInit(){

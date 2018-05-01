@@ -1,11 +1,13 @@
 package robots.implementations.robot127;
 
 import main.springApplication.beanPostProcessor.deprecatedRobotAnnotationBeanFactoryPostProcessor.DeprecatedRobot;
+import org.springframework.stereotype.Component;
 import robots.abstractRobot.Robot;
 import robots.abstractRobot.core.Core;
 import robots.abstractRobot.head.Head;
 import robots.implementations.robot724.Robot724;
 
+@Component
 @DeprecatedRobot(newImplementation = Robot724.class)
 public final class Robot127 implements Robot {
 

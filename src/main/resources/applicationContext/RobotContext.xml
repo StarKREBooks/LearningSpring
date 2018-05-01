@@ -6,7 +6,10 @@
     <!--Setup default BeanPostProcessors:-->
     <context:annotation-config/>
     <!--Setup default Component-scan-->
-    <context:component-scan base-package="main.springApplication.javaConfig"/>
+    <context:component-scan base-package="main"/>
+    <context:component-scan base-package="robots"/>
+
+
 
     <!--StarKRE Robot-->
     <bean id="starKRERobot"
@@ -14,6 +17,7 @@
           init-method="secondInit"
           destroy-method="destroy">
         <property name="version" value="7"/>
+        <property name="name" value="2"/>
     </bean>
 
     <!--724th Robot-->
