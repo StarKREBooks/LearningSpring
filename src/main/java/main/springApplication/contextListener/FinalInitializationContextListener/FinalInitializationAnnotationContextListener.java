@@ -22,18 +22,16 @@ public class FinalInitializationAnnotationContextListener implements Application
             final BeanDefinition beanDefinition = this.configurableListableBeanFactory.getBeanDefinition(name);
             final String originalClazzName = beanDefinition.getBeanClassName();
             try {
-                final Class<?> originalClazz =  Class.forName(originalClazzName);
-                final Method[] methods = originalClazz.getMethods();
-                for (final Method method : methods){
-                    if (method.isAnnotationPresent(FinalInitialization.class)){
-                        final Object bean = context.getBean(name);
-                        final Class<?> proxyClazz = bean.getClass();
-                        System.out.println("Original: " + method.getName());
-                        for (final Method eachMethod : proxyClazz.getMethods()){
-                            System.out.println("Proxy: " + eachMethod.getName());
+                if (originalClazzName != null){
+                    final Class<?> originalClazz =  Class.forName(originalClazzName);
+                    final Method[] methods = originalClazz.getMethods();
+                    for (final Method method : methods){
+                        if (method.isAnnotationPresent(FinalInitialization.class)){
+                            final Object bean = context.getBean(name);
+                            final Class<?> proxyClazz = bean.getClass();
+                            final Method proxyMethod = proxyClazz.getMethod(method.getName(), method.getParameterTypes());
+                            proxyMethod.invoke(bean);
                         }
-                        final Method proxyMethod = proxyClazz.getMethod(method.getName(), method.getParameterTypes());
-                        proxyMethod.invoke(bean);
                     }
                 }
             } catch (final Exception e) {

@@ -3,8 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+    <!--Setup default BeanPostProcessors:-->
     <context:annotation-config/>
+    <!--Setup default Component-scan-->
+    <context:component-scan base-package="main.springApplication.javaConfig"/>
 
     <!--StarKRE Robot-->
     <bean id="starKRERobot"
@@ -26,9 +28,15 @@
           init-method="install">
     </bean>
 
+    <bean id="robot127"
+          class="robots.implementations.robot127.Robot127">
+    </bean>
+
     <!--Define BeanPostProcessors:-->
     <bean class="main.springApplication.beanPostProcessor.friendlyRobotAnnotationBeanPostProcessor.FriendlyRobotAnnotationBeanPostProcessor"/>
     <bean class="main.springApplication.beanPostProcessor.robotVersionAnnotationBeanPostProcessor.RobotVersionAnnotationBeanPostProcessor"/>
     <bean class="main.springApplication.beanPostProcessor.profilingAnnotationBeanPostProcessor.ProfilingAnnotationBeanPostProcessor"/>
+    <bean class="main.springApplication.beanPostProcessor.deprecatedRobotAnnotationBeanFactoryPostProcessor.DeprecatedRobotAnnotationBeanFactoryPostProcessor"/>
+    <!--Define ContextListener:-->
     <bean class="main.springApplication.contextListener.FinalInitializationContextListener.FinalInitializationAnnotationContextListener"/>
 </beans>
