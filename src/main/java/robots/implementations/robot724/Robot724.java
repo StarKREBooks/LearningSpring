@@ -5,12 +5,24 @@ import robots.abstractRobot.Robot;
 import robots.abstractRobot.core.Core;
 import robots.abstractRobot.head.Head;
 
-public final class Robot724 implements Robot, InitializingBean {
+public final class Robot724 implements Robot {
 
     private Core core;
 
+
+
     @Override
-    public Head getHead() {
+    public final void calc() {
+
+    }
+
+    @Override
+    public final void thirdInit() {
+
+    }
+
+    @Override
+    public final Head getHead() {
         return null;
     }
 
@@ -19,17 +31,7 @@ public final class Robot724 implements Robot, InitializingBean {
         return null;
     }
 
-    @Override
-    public void calc() {
-
-    }
-
     public final void setCore(final Core core) {
         this.core = core;
-    }
-
-    @Override
-    public final void afterPropertiesSet() {
-
     }
 }

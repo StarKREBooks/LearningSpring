@@ -1,11 +1,14 @@
-package robots.abstractRobot.annotations;
+package main.springApplication.contextListener.FinalInitializationContextListener;
+
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface FriendlyRobot {
+public @interface FinalInitialization {
 }
+
+

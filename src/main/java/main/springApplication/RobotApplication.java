@@ -13,8 +13,8 @@ public final class RobotApplication {
         final String xmlConfigLocation = "applicationContext/RobotContext.xml";
         final String groovyConfigLocation = "applicationContext/RobotContext.groovy";
         //Раскоментируйте, если хотите запустить XMLContext:
-        // this.classPathXmlApplicationContext = new ClassPathXmlApplicationContext(xmlConfigLocation)
-        this.groovyApplicationContext = new GenericGroovyApplicationContext(groovyConfigLocation);
+         this.classPathXmlApplicationContext = new ClassPathXmlApplicationContext(xmlConfigLocation);
+//        this.groovyApplicationContext = new GenericGroovyApplicationContext(groovyConfigLocation);
     }
 
     public final ClassPathXmlApplicationContext getClassPathXmlApplicationContext(){

@@ -10,4 +10,6 @@ public interface Robot {
     Core getCore();
 
     void calc();
+
+    void thirdInit();
 }

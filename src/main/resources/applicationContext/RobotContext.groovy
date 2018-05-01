@@ -1,7 +1,9 @@
 package applicationContext
 
-import main.springApplication.beanPostProcessor.FriendlyRobotAnnotationBeanPostProcessor
-import main.springApplication.beanPostProcessor.RobotVersionAnnotationBeanPostProcessor
+import main.springApplication.beanPostProcessor.friendlyRobotAnnotationBeanPostProcessor.FriendlyRobotAnnotationBeanPostProcessor
+import main.springApplication.beanPostProcessor.profilingAnnotationBeanPostProcessor.ProfilingAnnotationBeanPostProcessor
+import main.springApplication.beanPostProcessor.robotVersionAnnotationBeanPostProcessor.RobotVersionAnnotationBeanPostProcessor
+import main.springApplication.contextListener.FinalInitializationContextListener.FinalInitializationAnnotationContextListener
 import robots.implementations.starKRERobot.StarKRERobot
 
 beans{
@@ -9,11 +11,15 @@ beans{
     //Define StarKRE robot:
     starKRERobot(StarKRERobot){bean ->
         version = 5
-        bean.initMethod = 'init'
+        bean.initMethod = 'secondInit'
         bean.destroyMethod = 'destroy'
     }
+
+    xmlns(['annotation-config':'http://www.springframework.org/schema/context'])
 
     //BeanPostProcessors:
     friendlyRobotAnnotationBeanPostProcessor(FriendlyRobotAnnotationBeanPostProcessor)
     robotVersionAnnotationBeanPostProcessor(RobotVersionAnnotationBeanPostProcessor)
+    profilingAnnotationBeanPostProcessor(ProfilingAnnotationBeanPostProcessor)
+    finalInitializationAnnotationContextListener(FinalInitializationAnnotationContextListener)
 }

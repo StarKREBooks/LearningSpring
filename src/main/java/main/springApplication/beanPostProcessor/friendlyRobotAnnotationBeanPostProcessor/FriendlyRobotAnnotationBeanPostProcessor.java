@@ -1,8 +1,7 @@
-package main.springApplication.beanPostProcessor;
+package main.springApplication.beanPostProcessor.friendlyRobotAnnotationBeanPostProcessor;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import robots.abstractRobot.annotations.FriendlyRobot;
 
 import java.util.logging.Logger;
 
@@ -13,8 +12,7 @@ public final class FriendlyRobotAnnotationBeanPostProcessor implements BeanPostP
     @Override
     public final Object postProcessBeforeInitialization(final Object bean, final String beanName)
             throws BeansException {
-        final FriendlyRobot friendlyRobotAnnotation = bean.getClass().getAnnotation(FriendlyRobot.class);
-        if (friendlyRobotAnnotation != null){
+        if (bean.getClass().isAnnotationPresent(FriendlyRobot.class)){
             final String message = "\n\n\n" + beanName + " IS A FRIENDLY ROBOT";
             log.info(message.toUpperCase());
         }

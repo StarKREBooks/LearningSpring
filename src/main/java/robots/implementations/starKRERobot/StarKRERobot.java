@@ -1,16 +1,18 @@
 package robots.implementations.starKRERobot;
 
-import org.springframework.beans.factory.InitializingBean;
+import main.springApplication.beanPostProcessor.profilingAnnotationBeanPostProcessor.Profiling;
+import main.springApplication.contextListener.FinalInitializationContextListener.FinalInitialization;
 import robots.abstractRobot.Robot;
-import robots.abstractRobot.annotations.FriendlyRobot;
-import robots.abstractRobot.annotations.RobotVersion;
+import main.springApplication.beanPostProcessor.friendlyRobotAnnotationBeanPostProcessor.FriendlyRobot;
+import main.springApplication.beanPostProcessor.robotVersionAnnotationBeanPostProcessor.RobotVersion;
 import robots.abstractRobot.core.Core;
 import robots.abstractRobot.head.Head;
 
 import java.util.logging.Logger;
 
+@Profiling
 @FriendlyRobot
-public final class StarKRERobot implements Robot, InitializingBean {
+public final class StarKRERobot implements Robot {
 
     private static final Logger log = Logger.getLogger(StarKRERobot.class.getName());
 
@@ -21,22 +23,24 @@ public final class StarKRERobot implements Robot, InitializingBean {
 
     private Core core;
 
+
     @Override
     public final void calc() {
         log.info("I'm calculating...");
     }
 
-    @Override
-    public final void afterPropertiesSet() {
-        log.info("I'm ready to the battle!!!");
-    }
-
-    private void init(){
+    private void secondInit(){
         log.info("Hello, I'm StarKRE with version: " + this.version);
     }
 
     private void destroy() {
         log.info("No!!! I'l be BACK!!!!!");
+    }
+
+    @Override
+    @FinalInitialization
+    public final void thirdInit(){
+        log.info("I'M READY!!!");
     }
 
     public final int getVersion() {

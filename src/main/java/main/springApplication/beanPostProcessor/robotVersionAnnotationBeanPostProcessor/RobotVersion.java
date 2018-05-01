@@ -1,4 +1,4 @@
-package robots.abstractRobot.annotations;
+package main.springApplication.beanPostProcessor.robotVersionAnnotationBeanPostProcessor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
