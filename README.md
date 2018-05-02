@@ -12,3 +12,5 @@
 https://objectpartners.com/2016/01/12/using-groovy-based-spring-configuration/
 
 https://habr.com/company/jugru/blog/218203/
+
+https://www.javatpoint.com/spring-tutorial-constructor-injection-with-collection
